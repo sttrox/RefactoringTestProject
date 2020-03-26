@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.1022
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfCom", "WpfCom.csproj", "{CFD66895-FDDA-4ACA-B482-82478F54A36C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfCom.Model", "..\WpfCom.Model\WpfCom.Model.csproj", "{959D732E-1823-471D-B8B6-63D5D27BFB9A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfCom.Model", "WpfCom.Model\WpfCom.Model.csproj", "{959D732E-1823-471D-B8B6-63D5D27BFB9A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfCom.ViewModel", "WpfCom.ViewModel\WpfCom.ViewModel.csproj", "{63519BD9-CC9F-46D2-8D4E-3BD080774AC4}"
 EndProject
