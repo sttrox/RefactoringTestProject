@@ -1,10 +1,9 @@
 ﻿using System.Collections.ObjectModel;
-using System.Data;
 using System.IO;
 using System.Windows.Input;
 using System.Xml.Serialization;
 
-namespace WpfCom
+namespace WpfCom.ViewModel
 {
     class DirectoryViewModel : OnPropertyChangedClass
     {

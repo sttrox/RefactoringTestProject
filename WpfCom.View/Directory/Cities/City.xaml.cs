@@ -1,24 +1,25 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace WpfCom
+namespace WpfCom.View.Directory.Cities
 {
     /// <summary>
-    /// Логика взаимодействия для Shop.xaml
+    /// Логика взаимодействия для City.xaml
     /// </summary>
-    public partial class Shop : UserControl
+    public partial class City : UserControl
     {
-        public Shop()
+        public City()
         {
             InitializeComponent();
         }
 
+
         #region routed events
         public static readonly RoutedEvent ButAddClickEvent = EventManager.RegisterRoutedEvent(
-            "ShopAddClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Shop));
+            "CityAddClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(City));
 
         // event control
-        public event RoutedEventHandler ShopAddClick
+        public event RoutedEventHandler CityAddClick
         {
             add { AddHandler(ButAddClickEvent, value); }
             remove { RemoveHandler(ButAddClickEvent, value); }
@@ -28,16 +29,16 @@ namespace WpfCom
 
         #region methods
 
-        private void ShopAdd_Click(object sender, RoutedEventArgs e)
+        private void CityAdd_Click(object sender, RoutedEventArgs e)
         {
             RaiseEvent(new RoutedEventArgs(ButAddClickEvent));
         }
 
-        private void btnShopClose_Click(object sender, RoutedEventArgs e)
+        #endregion
+
+        private void btnCityClose_Click(object sender, RoutedEventArgs e)
         {
             this.Visibility = Visibility.Hidden;
         }
-
-        #endregion
     }
 }

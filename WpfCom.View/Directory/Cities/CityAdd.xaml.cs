@@ -1,7 +1,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace WpfCom
+namespace WpfCom.View.Directory.Cities
 {
     /// <summary>
     /// Interaction logic for In_menu.xaml

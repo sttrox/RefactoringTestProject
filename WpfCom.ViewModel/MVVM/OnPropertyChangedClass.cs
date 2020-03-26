@@ -4,10 +4,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace WpfCom
+namespace WpfCom.ViewModel.MVVM
 {
     /// <summary>Базовый класс с реализацией INPC </summary>
     public class OnPropertyChangedClass : INotifyPropertyChanged

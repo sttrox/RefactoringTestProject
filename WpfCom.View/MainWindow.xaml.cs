@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace WpfCom
+namespace WpfCom.View
 { 
     public partial class MainWindow : Window
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace WpfCom
+namespace WpfCom.ViewModel.MVVM
 {
     public class RelayCommand : ICommand
     {
