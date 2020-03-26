@@ -1,43 +1,105 @@
-﻿<UserControl x:Class="WpfCom.View.Directory.Cities.CityAdd"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WpfCom"
-             mc:Ignorable="d" 
-             FontFamily="Century Gothic">
-            
+﻿<UserControl
+    x:Class="WpfCom.View.Directory.Cities.CityAdd"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WpfCom"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="Century Gothic"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/WpfCom.View;component/Themes/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
 
-    <Border BorderBrush="White" BorderThickness="2" CornerRadius="5" Padding="1" Height="auto" Width="300">
-        <Border Background="#FF007ACC" BorderThickness="1,1,1,0" CornerRadius="5,5,0,0" 
-                Padding="1" BorderBrush="White">
+
+    <Border
+        Width="300"
+        Height="auto"
+        Padding="1"
+        BorderBrush="White"
+        BorderThickness="2"
+        CornerRadius="5">
+        <Border
+            Padding="1"
+            Background="#FF007ACC"
+            BorderBrush="White"
+            BorderThickness="1,1,1,0"
+            CornerRadius="5,5,0,0">
             <StackPanel>
-                <!-- Header -->
-                <Border BorderBrush="{DynamicResource BorderBrush}"  >
+                <!--  Header  -->
+                <Border BorderBrush="{DynamicResource BorderBrush}">
                     <Grid Margin="5">
-                        <TextBlock  Foreground="White" Text="Добавить город" 
-                           TextWrapping="Wrap" Grid.Row="1" 
-                           HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18"/>
-                        <Button x:Name="btnAdd" Style="{DynamicResource RedButtonStyle}" Height="25"  
-                        HorizontalAlignment="Right" Width="25" Click="CityAddClose_Click" Grid.ColumnSpan="1">
+                        <TextBlock
+                            Grid.Row="1"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontSize="18"
+                            Foreground="White"
+                            Text="Добавить город"
+                            TextWrapping="Wrap" />
+                        <Button
+                            x:Name="btnAdd"
+                            Grid.ColumnSpan="1"
+                            Width="25"
+                            Height="25"
+                            HorizontalAlignment="Right"
+                            Click="CityAddClose_Click"
+                            Style="{DynamicResource RedButtonStyle}">
                             <Viewbox Width="20" Height="20">
-                                <Grid VerticalAlignment="Center" HorizontalAlignment="Center" >
-                                    <Ellipse Width="100" Height="100"/>
-                                    <Line Width="50" Height="50" X2="50" Y2="50" Stroke="White" VerticalAlignment="Center" HorizontalAlignment="Center" StrokeThickness="10" />
-                                    <Line Width="50" Height="50" X1="50" Y2="50" Stroke="White" VerticalAlignment="Center" HorizontalAlignment="Center" StrokeThickness="10" />
+                                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Ellipse Width="100" Height="100" />
+                                    <Line
+                                        Width="50"
+                                        Height="50"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Stroke="White"
+                                        StrokeThickness="10"
+                                        X2="50"
+                                        Y2="50" />
+                                    <Line
+                                        Width="50"
+                                        Height="50"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Stroke="White"
+                                        StrokeThickness="10"
+                                        X1="50"
+                                        Y2="50" />
                                 </Grid>
                             </Viewbox>
                         </Button>
                     </Grid>
                 </Border>
-                <!-- Content -->
-                <Border BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,1,1,1"  Height="100">
-                    <StackPanel  Margin="0,0,0,0" Height="100" Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}">
-                        <Label Margin="20,10,25,5" Foreground="{DynamicResource InputFontColor}" Content="Выберите новый город" HorizontalAlignment="Center" ></Label>
-                        <ComboBox x:Name="CityComboBox" Style="{DynamicResource DirectoryComboBox}" Height="30" Width="200"
-                          ItemsSource="{Binding CityAddOC }"
-                          DisplayMemberPath="City"
-                          SelectedValuePath="ID" VerticalContentAlignment="Center" FontWeight="Bold" Foreground="#FF170DE8">
+                <!--  Content  -->
+                <Border
+                    Height="100"
+                    BorderBrush="{DynamicResource BorderBrush}"
+                    BorderThickness="1,1,1,1">
+                    <StackPanel
+                        Height="100"
+                        Margin="0,0,0,0"
+                        Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}">
+                        <Label
+                            Margin="20,10,25,5"
+                            HorizontalAlignment="Center"
+                            Content="Выберите новый город"
+                            Foreground="{DynamicResource InputFontColor}" />
+                        <ComboBox
+                            x:Name="CityComboBox"
+                            Width="200"
+                            Height="30"
+                            VerticalContentAlignment="Center"
+                            DisplayMemberPath="City"
+                            FontWeight="Bold"
+                            Foreground="#FF170DE8"
+                            ItemsSource="{Binding CityAddOC}"
+                            SelectedValuePath="ID"
+                            Style="{DynamicResource DirectoryComboBox}">
                             <ComboBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <VirtualizingStackPanel />
@@ -47,16 +109,26 @@
                     </StackPanel>
 
                 </Border>
-                <!-- Footer -->
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button x:Name="CityAddOk" Content="Ок" Height="40" Width="80" 
-                            Command="{Binding CityAddCommandOk, Mode=OneWay}" 
-                            CommandParameter="{Binding SelectedValue, ElementName=CityComboBox}" Margin="0,8,15,5"/>
-                        <Button x:Name="CityAddCancel" Content="Cancel" Height="40" Width="80"
-                    Click="CityAddClose_Click" Margin="15,8,0,5"/>
+                <!--  Footer  -->
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Button
+                        x:Name="CityAddOk"
+                        Width="80"
+                        Height="40"
+                        Margin="0,8,15,5"
+                        Command="{Binding CityAddCommandOk, Mode=OneWay}"
+                        CommandParameter="{Binding SelectedValue, ElementName=CityComboBox}"
+                        Content="Ок" />
+                    <Button
+                        x:Name="CityAddCancel"
+                        Width="80"
+                        Height="40"
+                        Margin="15,8,0,5"
+                        Click="CityAddClose_Click"
+                        Content="Cancel" />
                 </StackPanel>
             </StackPanel>
-            </Border>
+        </Border>
     </Border>
-    
+
 </UserControl>

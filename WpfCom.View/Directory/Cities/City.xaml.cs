@@ -14,24 +14,12 @@ namespace WpfCom.View.Directory.Cities
         }
 
 
-        #region routed events
-        public static readonly RoutedEvent ButAddClickEvent = EventManager.RegisterRoutedEvent(
-            "CityAddClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(City));
-
-        // event control
-        public event RoutedEventHandler CityAddClick
-        {
-            add { AddHandler(ButAddClickEvent, value); }
-            remove { RemoveHandler(ButAddClickEvent, value); }
-        }
-
-        #endregion
-
+     
         #region methods
 
         private void CityAdd_Click(object sender, RoutedEventArgs e)
         {
-            RaiseEvent(new RoutedEventArgs(ButAddClickEvent));
+           // RaiseEvent(new RoutedEventArgs(ButAddClickEvent));
         }
 
         #endregion

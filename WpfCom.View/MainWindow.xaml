@@ -1,79 +1,179 @@
-﻿<Window x:Class="WpfCom.View.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfCom"
-        mc:Ignorable="d"
-        Title="Наименование проекта"
-      Width="960"
-      Height="728"  
-      Background="#5677FC" 
-      ResizeMode="CanResizeWithGrip"
-      WindowStartupLocation="CenterScreen" WindowState="Maximized" FontFamily="Century Gothic">
+﻿<Window
+    x:Class="WpfCom.View.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cities="clr-namespace:WpfCom.View.Directory.Cities"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:shops="clr-namespace:WpfCom.View.Directory.Shops"
+    Title="Наименование проекта"
+    Width="960"
+    Height="728"
+    Background="#5677FC"
+    FontFamily="Century Gothic"
+    ResizeMode="CanResizeWithGrip"
+    WindowStartupLocation="CenterScreen"
+    WindowState="Maximized"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/WpfCom.View;component/Themes/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
 
-    <Window.DataContext>
-        <local:DirectoryViewModel/>
-    </Window.DataContext>
+    <!--<Window.DataContext>
+        <viewModel:DirectoryViewModel/>
+    </Window.DataContext>-->
 
     <Grid>
-        <Border x:Name="DarkPage" Opacity="0.8" Panel.ZIndex="1" Grid.ColumnSpan="2" Background="#FF1E1E1E" Visibility="Hidden"/>
+        <Border
+            x:Name="DarkPage"
+            Grid.ColumnSpan="2"
+            Panel.ZIndex="1"
+            Background="#FF1E1E1E"
+            Opacity="0.8"
+            Visibility="Hidden" />
         <DockPanel Grid.ColumnSpan="2">
-            <Border x:Name="MenuHeader" Height="35" DockPanel.Dock="Top" BorderBrush="{DynamicResource BorderBrush}"
-                    Background="{DynamicResource BackgroundBrush}" Padding="10,0,10,0" >
-                <TextBlock FontSize="20" FontStretch="Normal" FontWeight="Light"
-                       TextWrapping="Wrap" Foreground="{DynamicResource HeaderFontColor}"
-                       VerticalAlignment="Bottom" Margin="0,0,0,5">
-                    <Run Foreground="#FFCFD3DA" Text="@"/>
-                    <Run FontWeight="Normal" Text=" "/>
-                    <Run FontWeight="Normal" Text="AlexControl"/>
+            <Border
+                x:Name="MenuHeader"
+                Height="35"
+                Padding="10,0,10,0"
+                Background="{StaticResource BackgroundBrush}"
+                BorderBrush="{DynamicResource BorderBrush}"
+                DockPanel.Dock="Top">
+                <TextBlock
+                    Margin="0,0,0,5"
+                    VerticalAlignment="Bottom"
+                    FontSize="20"
+                    FontStretch="Normal"
+                    FontWeight="Light"
+                    Foreground="{DynamicResource HeaderFontColor}"
+                    TextWrapping="Wrap">
+                    <Run Foreground="#FFCFD3DA" Text="@" />
+                    <Run FontWeight="Normal" Text=" " />
+                    <Run FontWeight="Normal" Text="AlexControl" />
                 </TextBlock>
             </Border>
-            <Border x:Name="MenuBorder" VerticalAlignment="Top" DockPanel.Dock="Top" Margin="1,2">
-                <Menu x:Name="MainMenu" VerticalAlignment="Center" Margin="5,0,0,0" Style="{DynamicResource MenuStyle}" 
-                      FontSize="14">
-                    <MenuItem x:Name="MenuFile" Header="Файл" Style="{DynamicResource MenuItemStyle}" >
-                        <MenuItem Header="Выход" x:Name="CtrExit" 
-                                  Click="CtrExit_Click" />
+            <Border
+                x:Name="MenuBorder"
+                Margin="1,2"
+                VerticalAlignment="Top"
+                DockPanel.Dock="Top">
+                <Menu
+                    x:Name="MainMenu"
+                    Margin="5,0,0,0"
+                    VerticalAlignment="Center"
+                    FontSize="14"
+                    Style="{DynamicResource MenuStyle}">
+                    <MenuItem
+                        x:Name="MenuFile"
+                        Header="Файл"
+                        Style="{DynamicResource MenuItemStyle}">
+                        <MenuItem
+                            x:Name="CtrExit"
+                            Click="CtrExit_Click"
+                            Header="Выход" />
                     </MenuItem>
-                    <MenuItem x:Name="MenuDirectory" Header="Справочник"  Style="{DynamicResource MenuItemStyle}">
-                        <MenuItem Header="Список городов" 
-                              x:Name="MenuDirectoryCity"  
-                              Click="MenuCity" Command="{Binding CityCommand , Mode=OneWay}" />
-                        <MenuItem Header="Список магазинов"
-                              x:Name="MenuDirectoryShop"  
-                              Click="MenuShop" Command="{Binding ShopCommand , Mode=OneWay}" />
+                    <MenuItem
+                        x:Name="MenuDirectory"
+                        Header="Справочник"
+                        Style="{DynamicResource MenuItemStyle}">
+                        <MenuItem
+                            x:Name="MenuDirectoryCity"
+                            Click="MenuCity"
+                            Command="{Binding CityCommand, Mode=OneWay}"
+                            Header="Список городов" />
+                        <MenuItem
+                            x:Name="MenuDirectoryShop"
+                            Click="MenuShop"
+                            Command="{Binding ShopCommand, Mode=OneWay}"
+                            Header="Список магазинов" />
                     </MenuItem>
                 </Menu>
             </Border>
-            <Grid DockPanel.Dock="Top" Margin="3" >
+            <Grid Margin="3" DockPanel.Dock="Top">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="441*" />
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <Border x:Name="BorderCity" Grid.Column="1" Grid.ColumnSpan="2" >
-                    <local:City x:Name="UcCity" CityAddClick="CityUserControl_ButAddClick" Visibility="Hidden"/>
+                <Border
+                    x:Name="BorderCity"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2">
+                    <cities:City x:Name="UcCity" Visibility="Hidden" />
+                    <!--  CityAddClick="CityUserControl_ButAddClick"  -->
                 </Border>
-                <Border x:Name="BorderShop" Grid.Column="1" Grid.ColumnSpan="2" >
-                    <local:Shop x:Name="UcShop" ShopAddClick="ShopUserControl_ButAddClick" Visibility="Hidden" />
+                <Border
+                    x:Name="BorderShop"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2">
+                    <shops:Shop x:Name="UcShop" Visibility="Hidden" />
+                    <!--  ShopAddClick="ShopUserControl_ButAddClick"  -->
                 </Border>
-                <Border x:Name="BorderGridRight" Grid.Column="3"  Visibility="Collapsed">
+                <Border
+                    x:Name="BorderGridRight"
+                    Grid.Column="3"
+                    Visibility="Collapsed">
                     <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
-                        <Button  Width="178"  HorizontalAlignment="Left" Height="40" Background="#FF5677FC" BorderThickness="0,3,3,1" BorderBrush="White">Button 1</Button>
-                        <Button  Width="178"  HorizontalAlignment="Left" Height="40" Background="#FF5677FC" BorderThickness="0,3,3,1" BorderBrush="White">Button 1</Button>
-                        <Button  Width="178"  HorizontalAlignment="Left" Height="40" Background="#FF5677FC" BorderThickness="0,3,3,1" BorderBrush="White">Button 1</Button>
-                        <Button  Width="178"  HorizontalAlignment="Left" Height="40" Background="#FF5677FC" BorderThickness="0,3,3,3" BorderBrush="White">Button 1</Button>
+                        <Button
+                            Width="178"
+                            Height="40"
+                            HorizontalAlignment="Left"
+                            Background="#FF5677FC"
+                            BorderBrush="White"
+                            BorderThickness="0,3,3,1">
+                            Button 1
+                        </Button>
+                        <Button
+                            Width="178"
+                            Height="40"
+                            HorizontalAlignment="Left"
+                            Background="#FF5677FC"
+                            BorderBrush="White"
+                            BorderThickness="0,3,3,1">
+                            Button 1
+                        </Button>
+                        <Button
+                            Width="178"
+                            Height="40"
+                            HorizontalAlignment="Left"
+                            Background="#FF5677FC"
+                            BorderBrush="White"
+                            BorderThickness="0,3,3,1">
+                            Button 1
+                        </Button>
+                        <Button
+                            Width="178"
+                            Height="40"
+                            HorizontalAlignment="Left"
+                            Background="#FF5677FC"
+                            BorderBrush="White"
+                            BorderThickness="0,3,3,3">
+                            Button 1
+                        </Button>
                     </StackPanel>
                 </Border>
             </Grid>
         </DockPanel>
 
-        <Border x:Name="BorderCityAdd" Panel.ZIndex="2" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <local:CityAdd x:Name="UcCityAdd" CityAddOkClick="CityAddUserControl_OkClick" CityAddCloseClick="CityAddUserControl_CloseClick" Visibility="Hidden" />
+        <Border
+            x:Name="BorderCityAdd"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Panel.ZIndex="2">
+            <cities:CityAdd x:Name="UcCityAdd" Visibility="Hidden" />
+            <!--  CityAddOkClick="CityAddUserControl_OkClick" CityAddCloseClick="CityAddUserControl_CloseClick"  -->
         </Border>
-        <Border x:Name="BorderShopAdd" Panel.ZIndex="2" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <local:ShopAdd x:Name="UcShopAdd" ShopAddOkClick="ShopAddUserControl_OkClick" ShopAddCloseClick="ShopAddUserControl_CloseClick" Visibility="Hidden" />
+        <Border
+            x:Name="BorderShopAdd"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Panel.ZIndex="2">
+            <shops:ShopAdd x:Name="UcShopAdd" Visibility="Hidden" />
+            <!--  ShopAddOkClick="ShopAddUserControl_OkClick" ShopAddCloseClick="ShopAddUserControl_CloseClick"  -->
         </Border>
     </Grid>
 </Window>

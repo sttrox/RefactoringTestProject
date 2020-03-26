@@ -110,6 +110,11 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\WpfCom.ViewModel\WpfCom.ViewModel.csproj">
+      <Project>{63519bd9-cc9f-46d2-8d4e-3bd080774ac4}</Project>
+      <Name>WpfCom.ViewModel</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
